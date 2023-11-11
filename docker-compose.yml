@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14.8-alpine3.18
+    container_name: quotes_cont
+    environment:
+      POSTGRES_DB: "quotes"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "curr2023"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
